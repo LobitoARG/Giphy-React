@@ -1,6 +1,8 @@
 import Card from "./Card";
 import React, {Component} from 'react'
 
+//const dotenv = require('dotenv')
+
 class Row extends Component{
     constructor(){
         super()
@@ -10,7 +12,9 @@ class Row extends Component{
     }
 
     componentDidMount(){
-        fetch('https://api.giphy.com/v1/gifs/trending?api_key=XJs8lZnQVCBXA3RQqCTyoLyASzn6eIEP&limit=5&rating=g')
+        
+        fetch(`https://api.giphy.com/v1/gifs/trending?api_key=${process.env.REACT_APP_API_KEY}&limit=10&rating=g`)
+        //console.log(resultado)
         .then(respuesta =>{
             //console.log(respuesta)
             return respuesta.json()
@@ -21,6 +25,8 @@ class Row extends Component{
         })
         .catch(error=>console.log(error))
     }
+
+
 
     render(){
         return(
